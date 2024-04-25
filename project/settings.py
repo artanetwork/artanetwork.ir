@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'tinymce',
     'sorl.thumbnail',
     'accounts.apps.AccountsConfig',
+    'company.apps.CompanyConfig',
 ]
 
 MIDDLEWARE = [
@@ -148,14 +149,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Content Security Policy settings
 # https://django-csp.readthedocs.io/en/latest/configuration.html
 
-CSP_DEFAULT_SRC = ["'none'"]
-CSP_IMG_SRC = ["'self'"]
+CSP_DEFAULT_SRC = ["'self'", "'unsafe-inline'"]
+CSP_IMAGE_SRC = ["'self'", "'unsafe-inline'", "https://www.google-analytics.com"]
 CSP_STYLE_SRC = ["'self'", "'unsafe-inline'"]
 CSP_STYLE_SRC_ELEM = ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://cdn.jsdelivr.net"]
 CSP_SCRIPT_SRC = ["'self'", "'unsafe-inline'"]
 CSP_SCRIPT_SRC_ELEM = ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net"]
 CSP_FONT_SRC = ["'self'", "data:", "https://fonts.googleapis.com", "https://fonts.gstatic.com"]
 CSP_CONNECT_SRC = ["'self'", "https://www.google-analytics.com"]
+CSP_FRAME_SRC = ["'self'"]
 
 
 # Cors Headers settings
@@ -186,6 +188,24 @@ THUMBNAIL_PADDING_COLOR = 'rgba(0, 0, 0, 0)'
 # https://django-filebrowser.readthedocs.io/en/latest/
 
 FILEBROWSER_MAX_UPLOAD_SIZE = 20971520
+
+
+# django-tinymce settings
+# https://django-tinymce.readthedocs.io/en/latest/
+
+TINYMCE_FILEBROWSER = True
+TINYMCE_DEFAULT_CONFIG = {
+    'menubar': False,
+    'width': '850',
+    'skin': 'tinymce-5',
+    'plugins': 'autolink directionality lists advlist media table image link',
+    'toolbar1': '''
+        styles fontfamily fontsize | forecolor backcolor | bold italic underline | outdent indent | removeformat
+    ''',
+    'toolbar2': '''
+        rtl ltr | alignright aligncenter alignleft alignjustify | bullist numlist | link unlink | image media | table
+    ''',
+}
 
 
 # Production settings
