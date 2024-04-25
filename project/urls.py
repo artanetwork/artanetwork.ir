@@ -21,8 +21,11 @@ from django.urls import include, path
 
 import filebrowser.sites
 
+import accounts.views
+
 urlpatterns = [
     path('admin/filebrowser/', filebrowser.sites.site.urls),
+    path('admin/password_change/', accounts.views.CustomPasswordChangeView.as_view(), name='password_change'),
     path('admin/', admin.site.urls),
     path('tinymce/', include('tinymce.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
