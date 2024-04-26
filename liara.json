@@ -1,0 +1,17 @@
+{
+    "platform": "django",
+    "app": "artanetwork-ir",
+    "django": {
+        "pythonVersion": "3.12",
+        "mirror": false
+    },
+    "build": {
+        "location": "germany"
+    },
+    "disks": [
+        {
+            "name": "artanetwork",
+            "mountTo": "media"
+        }
+    ]
+}

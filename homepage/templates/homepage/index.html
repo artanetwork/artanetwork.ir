@@ -10,24 +10,18 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-6 text-center">
-                            {% for slider in sliders %}
-                            <h2 data-aos="fade-down">{{ slider.title|safe }}</h2>
-                            <p data-aos="fade-up">{{ slider.subtitle|safe }}</p>
+                            <h2 data-aos="fade-down">{{ sliders.title|safe }}</h2>
+                            <p data-aos="fade-up">{{ sliders.subtitle|safe }}</p>
                             <a data-aos="fade-up" data-aos-delay="200" href="#" class="btn-get-started">تماس بگیرید</a>
-                            {% endfor %}
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-internal="5000">
+            <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-internal="3000">
                 
-                {% for slide in slides %}
-                {% if forloop.first %}
+                {% for slide in sliders.slides.all %}
                 <div class="carousel-item active" style="background-image: url('{{ slide.image.url }}')"></div>
-                {% else %}
-                <div class="carousel-item active" style="background-image: url('{{ slide.image.url }}')"></div>
-                {% endif %}
                 {% endfor %}
             
                 <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="next" style="margin-top: 70px;">
